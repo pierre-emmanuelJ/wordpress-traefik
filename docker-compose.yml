@@ -1,0 +1,42 @@
+version: "3.1"
+
+services:
+  wordpress:
+    image: wordpress
+    restart: always
+    expose:
+      - 80
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:example.com"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: password_example
+      WORDPRESS_DB_NAME: wp_database
+    volumes:
+      - ./data/www:/var/www/html
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: wp_database
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: password_example
+      MYSQL_RANDOM_ROOT_PASSWORD: "1"
+    volumes:
+      - ./data/db:/var/lib/mysql
+
+  traefik:
+    restart: always
+    image: traefik:v1.7.18
+    read_only: true
+    command: --web
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./acme.json:/acme.json
+      - ./traefik.toml:/traefik.toml
