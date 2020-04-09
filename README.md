@@ -35,4 +35,6 @@ $ sudo chown -R $USER ./data
 
 Browse https://example.com/wp-admin/install.php to setup your WordPress :rocket:
 
+![image](https://i.imgur.com/JpfTVYM.png)
+
 ## Enjoy
