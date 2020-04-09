@@ -33,6 +33,6 @@ $ sudo chown -R $USER ./data
 
 ### FINISH
 
-Browse https://example.com/wp-admin/install.php to setup your Wordpress :rocket:
+Browse https://example.com/wp-admin/install.php to setup your WordPress :rocket:
 
 ## Enjoy
