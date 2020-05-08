@@ -28,7 +28,7 @@ $ docker-compose up -d
 ```
 
 ```Shell
-$ sudo chown -R $USER ./data
+$ sudo chown -R www-data ./data/www
 ```
 
 ### FINISH
